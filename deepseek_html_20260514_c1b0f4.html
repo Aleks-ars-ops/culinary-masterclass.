@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Кулинарный мастер-класс — Готовим как шеф-повар</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #fef9f0;
+            color: #2d1b0e;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ========== АНИМАЦИИ ========== */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .animate-fade-up {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        .animate-fade {
+            animation: fadeIn 1s ease forwards;
+        }
+        .animate-slide-left {
+            animation: slideInLeft 0.8s ease forwards;
+        }
+        .animate-slide-right {
+            animation: slideInRight 0.8s ease forwards;
+        }
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* ========== ШАПКА ========== */
+        .header {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #e67e22;
+            text-decoration: none;
+        }
+        .logo span {
+            color: #2d1b0e;
+        }
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        .nav-menu a {
+            text-decoration: none;
+            color: #2d1b0e;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .nav-menu a:hover {
+            color: #e67e22;
+        }
+        .btn-register-header {
+            background: #e67e22;
+            color: white;
+            padding: 10px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+        .btn-register-header:hover {
+            background: #d35400;
+            transform: translateY(-2px);
+        }
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        @media (max-width: 900px) {
+            .nav-menu { display: none; }
+            .mobile-menu-btn { display: block; }
+        }
+        .mobile-nav {
+            display: none;
+            background: white;
+            padding: 20px;
+            border-top: 1px solid #eee;
+        }
+        .mobile-nav.active { display: block; }
+        .mobile-nav a {
+            display: block;
+            padding: 12px 0;
+            text-decoration: none;
+            color: #2d1b0e;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        /* ========== ГЕРОЙ ========== */
+        .hero {
+            background: linear-gradient(135deg, #fdf4e3, #fef9f0);
+            padding: 80px 0;
+            overflow: hidden;
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #2d1b0e;
+        }
+        .hero h1 span {
+            color: #e67e22;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: #5a4a3a;
+            margin-bottom: 30px;
+        }
+        .hero-image {
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        @media (max-width: 800px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero h1 { font-size: 2.2rem; }
+        }
+
+        /* ========== ТАЙМЕР ========== */
+        .timer-section {
+            background: #2d1b0e;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        .timer-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .timer-block {
+            background: rgba(255,255,255,0.15);
+            padding: 20px 30px;
+            border-radius: 20px;
+            min-width: 100px;
+        }
+        .timer-number {
+            font-size: 3rem;
+            font-weight: 800;
+        }
+        .timer-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        @media (max-width: 550px) {
+            .timer-block { padding: 15px 20px; min-width: 70px; }
+            .timer-number { font-size: 2rem; }
+        }
+
+        /* ========== ПРЕИМУЩЕСТВА ========== */
+        .features {
+            padding: 80px 0;
+            background: white;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            color: #2d1b0e;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: #e67e22;
+            margin: 15px auto 0;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .feature-card {
+            text-align: center;
+            padding: 30px;
+            background: #fef9f0;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        }
+        .feature-card i {
+            font-size: 2.5rem;
+            color: #e67e22;
+            margin-bottom: 20px;
+        }
+        .feature-card h3 {
+            margin-bottom: 15px;
+        }
+        @media (max-width: 800px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 550px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ========== О МАСТЕР-КЛАССЕ ========== */
+        .about-class {
+            padding: 80px 0;
+            background: #fef9f0;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .about-list {
+            list-style: none;
+        }
+        .about-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.1rem;
+        }
+        .about-list i {
+            color: #e67e22;
+            font-size: 1.3rem;
+        }
+        @media (max-width: 800px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ========== ЧТО ВЫ НАУЧИТЕСЬ ========== */
+        .skills {
+            padding: 80px 0;
+            background: white;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+        .skill-card {
+            text-align: center;
+            padding: 25px;
+            background: #fef9f0;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+        .skill-card i {
+            font-size: 2rem;
+            color: #e67e22;
+            margin-bottom: 15px;
+        }
+        @media (max-width: 800px) {
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 550px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ========== ОТЗЫВЫ ========== */
+        .reviews {
+            padding: 80px 0;
+            background: #fef9f0;
+        }
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .review-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .review-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #5a4a3a;
+        }
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .review-author i {
+            font-size: 2rem;
+            color: #e67e22;
+        }
+        @media (max-width: 800px) {
+            .reviews-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 550px) {
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ========== ЦЕНА И ФОРМА ========== */
+        .price-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #2d1b0e, #4a2c12);
+            color: white;
+            text-align: center;
+        }
+        .price-badge {
+            display: inline-block;
+            background: #e67e22;
+            color: white;
+            padding: 8px 25px;
+            border-radius: 40px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .price-old {
+            font-size: 1.5rem;
+            text-decoration: line-through;
+            opacity: 0.7;
+            margin-right: 15px;
+        }
+        .price-new {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #e67e22;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: 40px auto 0;
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            color: #2d1b0e;
+        }
+        .form-container h3 {
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1rem;
+        }
+        .btn-submit {
+            width: 100%;
+            background: #e67e22;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 40px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-submit:hover {
+            background: #d35400;
+            transform: translateY(-2px);
+        }
+
+        /* ========== ПОДВАЛ ========== */
+        .footer {
+            background: #1a0f06;
+            color: #9ca3af;
+            padding: 40px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="header-inner">
+            <a href="#" class="logo">Вкус<span>Мастер</span></a>
+            <ul class="nav-menu">
+                <li><a href="#about">О мастер-классе</a></li>
+                <li><a href="#skills">Чему научитесь</a></li>
+                <li><a href="#reviews">Отзывы</a></li>
+                <li><a href="#price" class="btn-register-header">Записаться</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+        </div>
+        <div class="mobile-nav" id="mobileNav">
+            <a href="#about">О мастер-классе</a>
+            <a href="#skills">Чему научитесь</a>
+            <a href="#reviews">Отзывы</a>
+            <a href="#price">Записаться</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- ГЕРОЙ -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="animate-slide-left">
+                    <h1>Станьте шеф-поваром <br>за <span>2 часа</span></h1>
+                    <p>Мастер-класс по приготовлению итальянской пиццы и домашней пасты. Секреты от профессионального шефа.</p>
+                    <a href="#price" class="btn-register-header" style="display: inline-block;">Записаться →</a>
+                </div>
+                <div class="hero-image animate-slide-right">
+                    <img src="https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?w=600" alt="Пицца">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ТАЙМЕР -->
+    <section class="timer-section">
+        <div class="container">
+            <h2 class="timer-title">До начала мастер-класса:</h2>
+            <div class="timer" id="timer">
+                <div class="timer-block"><div class="timer-number" id="days">00</div><div class="timer-label">дней</div></div>
+                <div class="timer-block"><div class="timer-number" id="hours">00</div><div class="timer-label">часов</div></div>
+                <div class="timer-block"><div class="timer-number" id="minutes">00</div><div class="timer-label">минут</div></div>
+                <div class="timer-block"><div class="timer-number" id="seconds">00</div><div class="timer-label">секунд</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПРЕИМУЩЕСТВА -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title animate-fade">Почему стоит выбрать наш мастер-класс</h2>
+            <div class="features-grid">
+                <div class="feature-card animate-fade-up"><i class="fas fa-user-chef"></i><h3>Шеф-повар с 15-летним стажем</h3><p>Работал в ресторанах Италии и Франции</p></div>
+                <div class="feature-card animate-fade-up"><i class="fas fa-utensils"></i><h3>Все ингредиенты включены</h3><p>Продукты высокого качества</p></div>
+                <div class="feature-card animate-fade-up"><i class="fas fa-certificate"></i><h3>Сертификат участника</h3><p>Подтверждение ваших навыков</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- О МАСТЕР-КЛАССЕ -->
+    <section class="about-class" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div>
+                    <h2 class="animate-slide-left">Что вас ждёт?</h2>
+                    <ul class="about-list">
+                        <li><i class="fas fa-check-circle"></i> Приготовление настоящей итальянской пиццы на тонком тесте</li>
+                        <li><i class="fas fa-check-circle"></i> Секреты идеальной пасты из твёрдых сортов пшеницы</li>
+                        <li><i class="fas fa-check-circle"></i> Приготовление фирменного соуса песто и томатного соуса</li>
+                        <li><i class="fas fa-check-circle"></i> Дегустация приготовленных блюд и общение с шефом</li>
+                        <li><i class="fas fa-check-circle"></i> Рецепты и видеоуроки в подарок</li>
+                    </ul>
+                </div>
+                <div class="hero-image animate-slide-right">
+                    <img src="https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?w=600" alt="Паста">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ЧЕМУ НАУЧИТЕСЬ -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <h2 class="section-title">Чему вы научитесь</h2>
+            <div class="skills-grid">
+                <div class="skill-card"><i class="fas fa-pizza-slice"></i><h4>Готовить пиццу</h4><p>Как у настоящего итальянца</p></div>
+                <div class="skill-card"><i class="fas fa-egg"></i><h4>Делать пасту</h4><p>Домашняя паста за 30 минут</p></div>
+                <div class="skill-card"><i class="fas fa-cheese"></i><h4>Соусы</h4><p>Песто, томатный, сливочный</p></div>
+                <div class="skill-card"><i class="fas fa-wine-bottle"></i><h4>Подача блюд</h4><p>Ресторанная сервировка</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ОТЗЫВЫ -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <h2 class="section-title">Отзывы участников</h2>
+            <div class="reviews-grid">
+                <div class="review-card"><div class="review-text">"Невероятный мастер-класс! Теперь я готовлю пиццу лучше, чем в любом ресторане. Спасибо шефу!"</div><div class="review-author"><i class="fas fa-user-circle"></i><div><strong>Екатерина</strong><br>участница</div></div></div>
+                <div class="review-card"><div class="review-text">"Всё очень понравилось. Паста получилась невероятно вкусной. Обязательно приду ещё!"</div><div class="review-author"><i class="fas fa-user-circle"></i><div><strong>Дмитрий</strong><br>участник</div></div></div>
+                <div class="review-card"><div class="review-text">"Лучший подарок для любителей кулинарии. Организация на высшем уровне, шеф отвечал на все вопросы."</div><div class="review-author"><i class="fas fa-user-circle"></i><div><strong>Анна</strong><br>участница</div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ЦЕНА И ФОРМА -->
+    <section class="price-section" id="price">
+        <div class="container">
+            <div class="price-badge animate-pulse">🔥 Специальное предложение 🔥</div>
+            <div><span class="price-old">5 900 ₽</span><span class="price-new">3 900 ₽</span></div>
+            <div class="form-container">
+                <h3>Запишитесь сейчас</h3>
+                <form id="registerForm">
+                    <div class="form-group"><input type="text" placeholder="Ваше имя" id="name" required></div>
+                    <div class="form-group"><input type="tel" placeholder="Телефон" id="phone" required></div>
+                    <div class="form-group"><input type="email" placeholder="Email" id="email" required></div>
+                    <button type="submit" class="btn-submit">Записаться →</button>
+                </form>
+                <p style="font-size: 0.8rem; margin-top: 20px; color: #666;">Осталось всего 15 мест</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2025 ВкусМастер. Все права защищены.</p>
+        <p style="margin-top: 10px;">📧 info@vkusmaster.ru | 📞 8-911-287-06-94</p>
+    </div>
+</footer>
+
+<script>
+    // Мобильное меню
+    const menuBtn = document.getElementById('mobileMenuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    if (menuBtn && mobileNav) {
+        menuBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('active');
+        });
+    }
+
+    // Плавная прокрутка
+    document.querySelectorAll('.nav-menu a, .mobile-nav a, .btn-register-header').forEach(link => {
+        link.addEventListener('click', (e) => {
+            const hash = link.getAttribute('href');
+            if (hash && hash.startsWith('#')) {
+                e.preventDefault();
+                const target = document.querySelector(hash);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    mobileNav.classList.remove('active');
+                }
+            }
+        });
+    });
+
+    // ТАЙМЕР (до ближайшей субботы 19:00)
+    function getNextSaturday() {
+        const now = new Date();
+        const nextSat = new Date();
+        nextSat.setDate(now.getDate() + ((6 - now.getDay() + 7) % 7));
+        nextSat.setHours(19, 0, 0, 0);
+        if (nextSat <= now) {
+            nextSat.setDate(nextSat.getDate() + 7);
+        }
+        return nextSat;
+    }
+
+    function updateTimer() {
+        const target = getNextSaturday();
+        const now = new Date();
+        const diff = target - now;
+        if (diff <= 0) {
+            document.getElementById('days').innerText = '00';
+            document.getElementById('hours').innerText = '00';
+            document.getElementById('minutes').innerText = '00';
+            document.getElementById('seconds').innerText = '00';
+            return;
+        }
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (86400000)) / (3600000));
+        const minutes = Math.floor((diff % 3600000) / 60000);
+        const seconds = Math.floor((diff % 60000) / 1000);
+        document.getElementById('days').innerText = days.toString().padStart(2, '0');
+        document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+        document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+        document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+    }
+    updateTimer();
+    setInterval(updateTimer, 1000);
+
+    // Форма
+    const registerForm = document.getElementById('registerForm');
+    if (registerForm) {
+        registerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            if (!name) {
+                alert('Пожалуйста, заполните имя');
+                return;
+            }
+            alert('✅ Заявка отправлена! Мы свяжемся с вами в ближайшее время.');
+            registerForm.reset();
+        });
+    }
+</script>
+
+</body>
+</html>
