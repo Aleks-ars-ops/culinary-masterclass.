@@ -25,6 +25,7 @@
             padding: 0 20px;
         }
 
+        /* Анимации */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -56,6 +57,7 @@
             animation: pulse 2s infinite;
         }
 
+        /* Шапка */
         .header {
             background: white;
             border-bottom: 2px solid #e67e22;
@@ -137,6 +139,7 @@
             border-bottom: 1px solid #f0f0f0;
         }
 
+        /* Герой */
         .hero {
             padding: 80px 0;
             background: white;
@@ -177,6 +180,7 @@
             .hero h1 { font-size: 2rem; }
         }
 
+        /* Таймер */
         .timer-section {
             background: #2d1b0e;
             color: white;
@@ -209,7 +213,7 @@
             .timer-number { font-size: 1.6rem; }
         }
 
-        /* ===== ПРЕИМУЩЕСТВА — ТЕПЕРЬ ТОЧНО РОВНО ===== */
+        /* Преимущества */
         .features {
             padding: 70px 0;
             background: #f8f9fa;
@@ -241,9 +245,9 @@
             transition: 0.3s;
             border: 2px solid #e0e0e0;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            height: 260px;
             display: flex;
             flex-direction: column;
+            height: 230px;
         }
         .feature-card:hover {
             transform: translateY(-5px);
@@ -255,14 +259,12 @@
             margin-bottom: 20px;
         }
         .feature-card h3 {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             font-size: 1.2rem;
-            min-height: 50px;
         }
         .feature-card p {
             font-size: 0.9rem;
             color: #5a4a3a;
-            line-height: 1.4;
         }
         @media (max-width: 800px) {
             .features-grid { grid-template-columns: repeat(2, 1fr); }
@@ -272,6 +274,7 @@
             .features-grid { grid-template-columns: 1fr; }
         }
 
+        /* О мастер-классе */
         .about-class {
             padding: 70px 0;
             background: white;
@@ -315,6 +318,7 @@
             .about-grid { grid-template-columns: 1fr; }
         }
 
+        /* Чему научитесь */
         .skills {
             padding: 70px 0;
             background: #f8f9fa;
@@ -332,6 +336,9 @@
             border: 2px solid #e0e0e0;
             transition: 0.3s;
             min-height: 170px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         .skill-card:hover {
             border-color: #e67e22;
@@ -342,6 +349,9 @@
             color: #e67e22;
             margin-bottom: 15px;
         }
+        .skill-card h4 {
+            margin-bottom: 8px;
+        }
         @media (max-width: 800px) {
             .skills-grid { grid-template-columns: repeat(2, 1fr); }
         }
@@ -349,6 +359,7 @@
             .skills-grid { grid-template-columns: 1fr; }
         }
 
+        /* Отзывы */
         .reviews {
             padding: 70px 0;
             background: white;
@@ -365,7 +376,7 @@
             border: 2px solid #e0e0e0;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             transition: 0.3s;
-            min-height: 210px;
+            min-height: 200px;
             display: flex;
             flex-direction: column;
         }
@@ -394,6 +405,7 @@
             .reviews-grid { grid-template-columns: 1fr; }
         }
 
+        /* Цена и форма */
         .price-section {
             padding: 70px 0;
             background: linear-gradient(135deg, #2d1b0e, #4a2c12);
@@ -459,6 +471,7 @@
             background: #d35400;
         }
 
+        /* Подвал */
         .footer {
             background: #1a0f06;
             color: #9ca3af;
@@ -520,7 +533,7 @@
         </div>
     </section>
 
-    <!-- ПРЕИМУЩЕСТВА — ТЕПЕРЬ АБСОЛЮТНО РОВНО -->
+    <!-- ПРЕИМУЩЕСТВА — ИДЕАЛЬНО РОВНО -->
     <section class="features">
         <div class="container">
             <h2 class="section-title">Почему стоит выбрать нас</h2>
@@ -601,6 +614,7 @@
 </footer>
 
 <script>
+    // Мобильное меню
     const menuBtn = document.getElementById('mobileMenuBtn');
     const mobileNav = document.getElementById('mobileNav');
     if (menuBtn && mobileNav) {
@@ -609,6 +623,7 @@
         });
     }
 
+    // Плавная прокрутка
     document.querySelectorAll('.nav-menu a, .mobile-nav a, .btn-register-header').forEach(link => {
         link.addEventListener('click', (e) => {
             const hash = link.getAttribute('href');
@@ -623,6 +638,7 @@
         });
     });
 
+    // Таймер (до ближайшей субботы 19:00)
     function getNextSaturday() {
         const now = new Date();
         const nextSat = new Date();
@@ -657,6 +673,7 @@
     updateTimer();
     setInterval(updateTimer, 1000);
 
+    // Форма
     const registerForm = document.getElementById('registerForm');
     if (registerForm) {
         registerForm.addEventListener('submit', (e) => {
