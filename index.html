@@ -25,7 +25,6 @@
             padding: 0 20px;
         }
 
-        /* ========== АНИМАЦИИ ========== */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -43,7 +42,6 @@
             animation: pulse 2s infinite;
         }
 
-        /* ========== ШАПКА ========== */
         .header {
             background: white;
             border-bottom: 2px solid #e67e22;
@@ -92,9 +90,7 @@
             border-radius: 40px;
             text-decoration: none;
             font-weight: 600;
-            transition: 0.2s;
             display: inline-block;
-            border: none;
             cursor: pointer;
         }
         .btn-register-header:hover {
@@ -127,7 +123,6 @@
             border-bottom: 1px solid #f0f0f0;
         }
 
-        /* ========== ГЕРОЙ ========== */
         .hero {
             padding: 80px 0;
             background: white;
@@ -171,7 +166,6 @@
             .hero h1 { font-size: 2rem; }
         }
 
-        /* ========== ТАЙМЕР ========== */
         .timer-section {
             background: #2d1b0e;
             color: white;
@@ -204,7 +198,6 @@
             .timer-number { font-size: 1.6rem; }
         }
 
-        /* ========== ПРЕИМУЩЕСТВА (ВЫРОВНЕНО) ========== */
         .features {
             padding: 70px 0;
             background: #f5f5f5;
@@ -238,7 +231,7 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             display: flex;
             flex-direction: column;
-            min-height: 280px;
+            min-height: 260px;
         }
         .feature-card:hover {
             transform: translateY(-5px);
@@ -254,9 +247,9 @@
             font-size: 1.2rem;
         }
         .feature-card p {
-            flex-grow: 1;
             font-size: 0.95rem;
             color: #5a4a3a;
+            line-height: 1.5;
         }
         @media (max-width: 800px) {
             .features-grid { grid-template-columns: repeat(2, 1fr); }
@@ -265,7 +258,6 @@
             .features-grid { grid-template-columns: 1fr; }
         }
 
-        /* ========== О МАСТЕР-КЛАССЕ ========== */
         .about-class {
             padding: 70px 0;
             background: white;
@@ -309,7 +301,6 @@
             .about-grid { grid-template-columns: 1fr; }
         }
 
-        /* ========== ЧЕМУ НАУЧИТЕСЬ ========== */
         .skills {
             padding: 70px 0;
             background: #f5f5f5;
@@ -326,9 +317,7 @@
             border-radius: 16px;
             border: 2px solid #e0e0e0;
             transition: 0.3s;
-            display: flex;
-            flex-direction: column;
-            min-height: 200px;
+            min-height: 180px;
         }
         .skill-card:hover {
             border-color: #e67e22;
@@ -346,7 +335,6 @@
             .skills-grid { grid-template-columns: 1fr; }
         }
 
-        /* ========== ОТЗЫВЫ ========== */
         .reviews {
             padding: 70px 0;
             background: white;
@@ -363,9 +351,9 @@
             border: 2px solid #e0e0e0;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             transition: 0.3s;
+            min-height: 220px;
             display: flex;
             flex-direction: column;
-            min-height: 250px;
         }
         .review-card:hover {
             border-color: #e67e22;
@@ -392,7 +380,6 @@
             .reviews-grid { grid-template-columns: 1fr; }
         }
 
-        /* ========== ЦЕНА И ФОРМА ========== */
         .price-section {
             padding: 70px 0;
             background: linear-gradient(135deg, #2d1b0e, #4a2c12);
@@ -452,13 +439,11 @@
             font-size: 1rem;
             font-weight: 700;
             cursor: pointer;
-            transition: 0.2s;
         }
         .btn-submit:hover {
             background: #d35400;
         }
 
-        /* ========== ПОДВАЛ ========== */
         .footer {
             background: #1a0f06;
             color: #9ca3af;
@@ -499,7 +484,7 @@
                 <div class="animate-fade-up">
                     <h1>Станьте шеф-поваром <br>за <span>2 часа</span></h1>
                     <p>Мастер-класс по приготовлению итальянской пиццы и домашней пасты. Секреты от профессионального шефа.</p>
-                    <a href="#price" class="btn-register-header" style="display: inline-block;">Записаться →</a>
+                    <a href="#price" class="btn-register-header">Записаться →</a>
                 </div>
                 <div class="hero-image">
                     <img src="https://as2.ftcdn.net/jpg/06/22/52/27/1000_F_622522749_jnFKUGL9AM22T9SGI9yd8cYzXCPt6RcW.jpg" alt="Паста">
@@ -524,9 +509,9 @@
         <div class="container">
             <h2 class="section-title">Почему стоит выбрать нас</h2>
             <div class="features-grid">
-                <div class="feature-card"><i class="fas fa-user-chef"></i><h3>Шеф-повар с 15-летним стажем</h3><p>Работал в ресторанах Италии и Франции. Личный опыт и авторские рецепты.</p></div>
-                <div class="feature-card"><i class="fas fa-utensils"></i><h3>Все ингредиенты включены</h3><p>Продукты высокого качества. Вам не нужно ничего покупать — всё выдадим.</p></div>
-                <div class="feature-card"><i class="fas fa-certificate"></i><h3>Сертификат участника</h3><p>Подтверждение ваших навыков. Сертификат пригодится для портфолио.</p></div>
+                <div class="feature-card"><i class="fas fa-user-chef"></i><h3>Шеф-повар с 15-летним стажем</h3><p>Работал в ресторанах Италии и Франции.</p></div>
+                <div class="feature-card"><i class="fas fa-utensils"></i><h3>Все ингредиенты включены</h3><p>Продукты высокого качества. Всё выдадим.</p></div>
+                <div class="feature-card"><i class="fas fa-certificate"></i><h3>Сертификат участника</h3><p>Подтверждение ваших навыков для портфолио.</p></div>
             </div>
         </div>
     </section>
